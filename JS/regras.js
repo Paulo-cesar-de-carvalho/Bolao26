@@ -11,3 +11,4 @@ btnCopiar.addEventListener("click", async function copiarTexto() {
     console.error("Falha ao copiar: ", err);
   }
 })
+//aa
