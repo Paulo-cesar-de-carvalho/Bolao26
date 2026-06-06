@@ -1,16 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classificação</title>
-    <link rel="stylesheet" href="Estilo/classificacao.css">
-    <script src="js/dados/id_jogos.js"></script>
-    <script src="js/placares_reais.js"></script>
-    <script src="js/classificacao.js" defer></script>
-</head>
-<body>
-    TO-DO
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Classificação</title>
+        <link rel="stylesheet" href="Estilo/classificacao.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/dados/apostas.js"></script>
+        <script src="js/dados/grupos.js"></script>
+        <script src="js/dados/id_jogos.js"></script>
+        <script src="js/calculos.js"></script>
+        <script src="js/jogos.js"></script>
+        <script src="js/classificacao.js" defer></script>
+    </head>
+    <body>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#pane_geral">
+                    Classificação Geral
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#pane_pordia">
+                    Classificação por dia
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#pane_jogos">Jogos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#pane_apostas">Apostas</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane container active" id="pane_geral">
+                <div id="subpage_geral_temp">
+                    <center>Carregando...</center>
+                </div>
+                <div class="escondido" id="subpage_geral">
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <th>Var</th>
+                            <th>Pos</th>
+                            <th>Nome</th>
+                            <th>Pontos</th>
+                            <th>Placares</th>
+                            <th>Resultados</th>
+                        </thead>
+                        <tbody id="tbody_geral"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane container" id="pane_pordia">
+                <center>Em Construção</center>
+            </div>
+            <div class="tab-pane container" id="pane_jogos">
+                <center>Carregando...</center>
+            </div>
+            <div class="tab-pane container" id="pane_apostas">
+                <center>Em Construção</center>
+            </div>
+        </div>
+    </body>
 </html>
