@@ -98,6 +98,6 @@ function calcularClassificacao(jogos) {
     const ultimoDia = dias.length > 0 ? dias[dias.length - 1] : null
     return {
         classificacaoPorDia: classificacaoPorDia,
-        classificacaoAtual: classificacaoPorDia.get(ultimoDia),
+        classificacaoGeral: classificacaoPorDia.get(ultimoDia),
     }
 }

@@ -28,6 +28,6 @@ async function carregarJogos() {
             placarB: placarDisponivel ? placar.Away.Score : null,
         })
     }
-    jogos.sort((a, b) => a.jogo_num - b.jogo_num)
+    jogos.sort((a, b) => a.data_hora - b.data_hora)
     return jogos
 }

@@ -1,3 +1,54 @@
 .escondido {
     display: none;
 }
+
+.numero {
+    font-variant-numeric: tabular-nums;
+}
+
+.placar_lista {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.placar_container {
+    width: 400px;
+    height: 90px;
+    border: solid 1px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+}
+
+.placar_linha {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.placar_bandeira {
+    width: 42px;
+    height: 35px;
+    border: solid 1px;
+}
+
+.placar_resultado {
+    padding: 5px;
+    min-width: 2rem;
+    min-height: 1rem;
+}
+
+.placar_nome_time {
+    width: 20rem;
+}
