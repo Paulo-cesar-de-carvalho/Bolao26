@@ -6,19 +6,21 @@ function calcularPontuacaoPalpite(apostaA, apostaB, realA, realB, multiplicador)
     return pontos * multiplicador
 }
 
-function calcularClassificacaoPorDia(jogos) {
+function calcularClassificacao(jogos) {
     // Datas únicas que já passaram
     const dias = []
     for (const jogo of jogos) {
-        if (jogo.placar1 === null || jogo.placar2 === null) {
+        if (jogo.placarA === null || jogo.placarB === null) {
             continue
         }
         if (!dias.find((d) => d.getTime() === jogo.dia.getTime())) {
             dias.push(jogo.dia)
         }
     }
-    const classificacaoPorDia = []
-    for (const dia of dias) {
+    const classificacaoPorDia = new Map()
+    for (let i = 0; i < dias.length; i++) {
+        const dia = dias[i]
+        const diaAnterior = i > 0 ? dias[i - 1] : null
         const jogosFiltrados = jogos.filter((jogo) => jogo.dia.getTime() <= dia.getTime())
         const classificacao = []
         // apostas vem de apostas.js
@@ -81,22 +83,21 @@ function calcularClassificacaoPorDia(jogos) {
                     atual.pos = i + 1
                 }
             }
-        }
-        classificacaoPorDia.push({ dia: dia, classificacao: classificacao })
-    }
-    return classificacaoPorDia
-}
 
-function calcularClassificacaoAtual(classificacaoPorDia) {
-    const classificacaoAtual = classificacaoPorDia[classificacaoPorDia.length - 1].classificacao
-    if (classificacaoPorDia.length > 1) {
-        const classificacaoAnterior =
-            classificacaoPorDia[classificacaoPorDia.length - 2].classificacao
-        for (const jogador of classificacaoAtual) {
-            const posAnterior = classificacaoAnterior.find((j) => j.nome === jogador.nome).pos
-            const posAtual = jogador.pos
-            jogador.var = posAtual - posAnterior
+            // Cálculo das variações
+            if (diaAnterior != null) {
+                const classificacaoDiaAnterior = classificacaoPorDia.get(diaAnterior)
+                const posDiaAnterior = classificacaoDiaAnterior.find(
+                    (c) => c.nome === jogador.nome
+                ).pos
+                jogador.var = jogador.pos - posDiaAnterior
+            }
         }
+        classificacaoPorDia.set(dia, classificacao)
     }
-    return classificacaoAtual
+    const ultimoDia = dias.length > 0 ? dias[dias.length - 1] : null
+    return {
+        classificacaoPorDia: classificacaoPorDia,
+        classificacaoAtual: classificacaoPorDia.get(ultimoDia),
+    }
 }

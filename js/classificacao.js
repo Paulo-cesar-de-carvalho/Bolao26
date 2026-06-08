@@ -1,7 +1,7 @@
 function construirClassificacaoGeral(classificacaoGeral, tbody) {
     for (let i = 0; i < classificacaoGeral.length; i++) {
         const row = document.createElement("tr")
-        const td = []
+        const tdTextos = []
         let v = ""
         if (classificacaoGeral[i]["var"] != 0) {
             if (classificacaoGeral[i]["var"] > 0) {
@@ -10,29 +10,31 @@ function construirClassificacaoGeral(classificacaoGeral, tbody) {
                 v = "<span class='var-verde'>" + -classificacaoGeral[i]["var"] + "&uarr;</span>"
             }
         }
-        td[0] = v
-        td[1] = classificacaoGeral[i]["pos"] + "&ordm;"
+        tdTextos[0] = v
+        tdTextos[1] = classificacaoGeral[i]["pos"] + "&ordm;"
         if (i > 0) {
             if (classificacaoGeral[i]["pos"] == classificacaoGeral[i - 1]["pos"]) {
-                td[1] = ""
+                tdTextos[1] = ""
             }
         }
-        td[2] = classificacaoGeral[i]["nome"]
-        td[3] = classificacaoGeral[i]["pontos"]
-        td[4] = classificacaoGeral[i]["placares"]
-        td[5] = classificacaoGeral[i]["resultados"]
-        for (let j = 0; j < td.length; j++) {
-            row.appendChild(td[j])
+        tdTextos[2] = classificacaoGeral[i]["nome"]
+        tdTextos[3] = classificacaoGeral[i]["pontos"]
+        tdTextos[4] = classificacaoGeral[i]["placares"]
+        tdTextos[5] = classificacaoGeral[i]["resultados"]
+        for (let j = 0; j < tdTextos.length; j++) {
+            const tdElem = document.createElement("td")
+            tdElem.innerHTML = tdTextos[j]
+            row.appendChild(tdElem)
         }
         tbody.appendChild(row)
     }
 }
 
 async function construirPagina() {
-    jogos = await pegarJogos()
-    classificacaoPorDia = calcularClassificacaoPorDia(jogos)
-    classificacaoGeral = calcularClassificacaoAtual(classificacaoPorDia)
-    construirClassificacaoGeral(classificacaoGeral, document.getElementById("tbody_geral"))
+    jogos = await carregarJogos()
+    const { classificacaoPorDia, classificacaoAtual } = calcularClassificacao(jogos)
+    console.log(classificacaoAtual)
+    construirClassificacaoGeral(classificacaoAtual, document.getElementById("tbody_geral"))
     document.getElementById("subpage_geral_temp").classList.toggle("escondido")
     document.getElementById("subpage_geral").classList.toggle("escondido")
 }
