@@ -50,7 +50,7 @@ function construirPlacar(jogo, placarA, placarB) {
     divLinhaPlacar.appendChild(divTimeA)
 
     const imgBandeiraA = document.createElement("img")
-    imgBandeiraA.setAttribute("src", `Imagens/Bandeiras/${jogo.timeA_nome}`)
+    imgBandeiraA.setAttribute("src", `https://api.fifa.com/api/v3/picture/flags-sq-1/${jogo.timeA}`)
     imgBandeiraA.setAttribute("alt", `Bandeira de ${jogo.timeA_nome}`)
     imgBandeiraA.classList.add("placar_bandeira")
     divLinhaPlacar.appendChild(imgBandeiraA)
@@ -72,7 +72,7 @@ function construirPlacar(jogo, placarA, placarB) {
     divLinhaPlacar.appendChild(divPlacarB)
 
     const imgBandeiraB = document.createElement("img")
-    imgBandeiraB.setAttribute("src", `Imagens/Bandeiras/${jogo.timeB_nome}`)
+    imgBandeiraB.setAttribute("src", `https://api.fifa.com/api/v3/picture/flags-sq-1/${jogo.timeB}`)
     imgBandeiraB.setAttribute("alt", `Bandeira de ${jogo.timeB_nome}`)
     imgBandeiraB.classList.add("placar_bandeira")
     divLinhaPlacar.appendChild(imgBandeiraB)
@@ -92,12 +92,9 @@ function construirPlacar(jogo, placarA, placarB) {
 }
 
 function construirListaDeJogos(jogos, div) {
-    const divInterno = document.createElement("div")
-    divInterno.classList.add("placar_lista")
     for (const jogo of jogos) {
-        divInterno.appendChild(construirPlacar(jogo, jogo.placarA, jogo.placarB))
+        div.appendChild(construirPlacar(jogo, jogo.placarA, jogo.placarB))
     }
-    div.appendChild(divInterno)
 }
 
 async function construirPagina() {
@@ -106,7 +103,7 @@ async function construirPagina() {
     construirClassificacaoGeral(classificacaoGeral, document.getElementById("tbody_geral"))
     document.getElementById("subpage_geral_temp").classList.toggle("escondido")
     document.getElementById("subpage_geral").classList.toggle("escondido")
-    construirListaDeJogos(jogos, document.getElementById("subpage_jogos"))
+    construirListaDeJogos(jogos, document.getElementById("jogos_placar_lista"))
     document.getElementById("subpage_jogos_temp").classList.toggle("escondido")
     document.getElementById("subpage_jogos").classList.toggle("escondido")
 }

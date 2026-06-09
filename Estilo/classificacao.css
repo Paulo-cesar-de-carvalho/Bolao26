@@ -10,12 +10,13 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 15px;
 }
 
 .placar_container {
-    width: 400px;
-    height: 90px;
+    width: 430px;
+    height: 120px;
+    padding: 15px;
+    margin: 20px;
     border: solid 1px;
     border-radius: 4px;
     font-weight: bold;
@@ -39,12 +40,12 @@
 
 .placar_bandeira {
     width: 42px;
-    height: 35px;
     border: solid 1px;
 }
 
 .placar_resultado {
     padding: 5px;
+    font-size: 16px;
     min-width: 2rem;
     min-height: 1rem;
 }

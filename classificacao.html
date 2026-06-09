@@ -19,24 +19,28 @@
         <script src="js/classificacao.js" defer></script>
     </head>
     <body>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="#pane_geral">
-                    Classificação Geral
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#pane_pordia">
-                    Classificação por dia
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#pane_jogos">Jogos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#pane_apostas">Apostas</a>
-            </li>
-        </ul>
+        <nav class="navbar navbar-expand-lg">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#pane_geral">
+                        Classificação Geral
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#pane_pordia">
+                        Classificação por dia
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#pane_jogos">
+                        Resultados Oficiais
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#pane_apostas">Apostas</a>
+                </li>
+            </ul>
+        </nav>
         <div class="tab-content">
             <div class="tab-pane container active" id="pane_geral">
                 <div id="subpage_geral_temp">
@@ -48,9 +52,9 @@
                             <th>Var</th>
                             <th>Pos</th>
                             <th>Nome</th>
-                            <th>Pontos</th>
-                            <th>Placares</th>
-                            <th>Resultados</th>
+                            <th>Pts</th>
+                            <th>Placar</th>
+                            <th>Resultado</th>
                         </thead>
                         <tbody id="tbody_geral"></tbody>
                     </table>
@@ -63,7 +67,9 @@
                 <div id="subpage_jogos_temp">
                     <center>Carregando...</center>
                 </div>
-                <div class="escondido" id="subpage_jogos"></div>
+                <div class="escondido" id="subpage_jogos">
+                    <div id="jogos_placar_lista" class="placar_lista"></div>
+                </div>
             </div>
             <div class="tab-pane container" id="pane_apostas">
                 <center>Em Construção</center>
