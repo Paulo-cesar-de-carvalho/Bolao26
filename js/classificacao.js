@@ -100,7 +100,12 @@ function construirListaDeJogos(jogos, div) {
 async function construirPagina() {
     jogos = await carregarJogos()
     const { classificacaoPorDia, classificacaoGeral } = calcularClassificacao(jogos)
-    construirClassificacaoGeral(classificacaoGeral, document.getElementById("tbody_geral"))
+    if (classificacaoGeral) {
+        construirClassificacaoGeral(classificacaoGeral, document.getElementById("tbody_geral"))
+    } else {
+        document.getElementById("subpage_geral").innerHTML =
+            "<center>Aguardando resultados do primeiro jogo...</center>"
+    }
     document.getElementById("subpage_geral_temp").classList.toggle("escondido")
     document.getElementById("subpage_geral").classList.toggle("escondido")
     construirListaDeJogos(jogos, document.getElementById("jogos_placar_lista"))
