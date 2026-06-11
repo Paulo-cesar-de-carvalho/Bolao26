@@ -64,7 +64,7 @@ function calcularClassificacao(jogos) {
             classificacao.push(jogador)
 
             // Critérios de desempate
-            classificacao.sort((a, b) => a.nome.localeCompare(b.nome)) // Ordem alfabética
+            classificacao.sort((a, b) => b.nome.localeCompare(a.nome)) // Ordem alfabética
             classificacao.sort((a, b) => (a.resultados <= b.resultados ? 1 : -1))
             classificacao.sort((a, b) => (a.placares <= b.placares ? 1 : -1))
             classificacao.sort((a, b) => (a.pontos <= b.pontos ? 1 : -1))

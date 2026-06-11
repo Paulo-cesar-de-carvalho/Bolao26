@@ -23,7 +23,7 @@
         <script src="js/jogos.js"></script>
         <script src="js/componente_placar.js"></script>
         <script src="js/componente_barra_navegacao.js"></script>
-        <script src="js/pagina_classificacao.js" defer></script>
+        <script src="js/pagina_apostas.js" defer></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -44,28 +44,15 @@
             </div>
         </nav>
         <div class="container">
-            <div id="pagina_geral_temp">
+            <div id="pagina_apostas_temp">
                 <center>Carregando...</center>
             </div>
-            <div class="escondido" id="pagina_geral">
+            <div class="escondido" id="pagina_apostas">
                 <center>
-                    <h3 class="titulo">Classificação Geral</h3>
+                    <h3 class="titulo">Apostas</h3>
                 </center>
-                <table class="table table-sm table-striped">
-                    <thead>
-                        <th>Var</th>
-                        <th>Pos</th>
-                        <th>Nome</th>
-                        <th>Pts</th>
-                        <th>Placar</th>
-                        <th>Resultado</th>
-                    </thead>
-                    <tbody id="tbody_geral"></tbody>
-                </table>
-                <center>
-                    <h3 class="titulo">Resultados Oficiais</h3>
-                </center>
-                <div id="jogos_placar_lista" class="placar_lista"></div>
+                <select class="form-select" id="select_apostadores"></select>
+                <div id="apostas_placar_lista" class="placar_lista"></div>
             </div>
         </div>
         <script

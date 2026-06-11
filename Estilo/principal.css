@@ -28,7 +28,7 @@ nav {
 
 .table {
     background-color: var(--cor-primaria);
-    font-size: clamp(0.85rem, 2vw, 1.5rem);
+    font-size: clamp(0.75rem, 2vw, 1.5rem);
     border: 1px solid black;
 }
 
@@ -46,7 +46,8 @@ nav {
     width: 350px;
     height: 120px;
     padding: 5px;
-    margin: 20px;
+    margin-top: 18px;
+    margin-bottom: 2px;
     border: solid 1px;
     border-radius: 4px;
     background-color: white;
@@ -83,6 +84,11 @@ nav {
 
 .placar_nome_time {
     width: 25rem;
+}
+
+.resultado_oficial {
+    font-weight: bold;
+    font-size: 0.8rem;
 }
 
 .var-vermelho {
