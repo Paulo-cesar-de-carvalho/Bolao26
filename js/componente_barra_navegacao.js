@@ -1,5 +1,5 @@
 const items = {
-    "Classificação Geral": "/",
+    "Classificação Geral": "index.html",
     Apostas: "apostas.html",
     Regras: "regras.html",
 }
