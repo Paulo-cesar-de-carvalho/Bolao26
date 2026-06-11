@@ -6,7 +6,7 @@ body {
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
         url("../Imagens/fifa_trophy_bg.png");
-    background-size: 10vw;
+    background-size: 12.5vw;
     background-repeat: repeat;
 }
 
