@@ -12,12 +12,17 @@ async function carregarJogos() {
             continue
         }
         const horaJogo = new Date(placar.Date)
+        const horaLocalJogo = new Date(placar.LocalDate)
         const placarDisponivel = horaAtual.getTime() >= horaJogo.getTime() - 15 * 60 * 1000
         jogos.push({
             jogo_id: id,
             jogo_num: placar.MatchNumber,
             data_hora: horaJogo,
-            dia: new Date(horaJogo.getFullYear(), horaJogo.getMonth(), horaJogo.getDate()),
+            dia: new Date(
+                horaLocalJogo.getFullYear(),
+                horaLocalJogo.getMonth(),
+                horaLocalJogo.getDate()
+            ),
             estadio: placar.Stadium.Name[0].Description,
             grupo: placar.GroupName[0].Description,
             timeA: placar.Home.Abbreviation,
