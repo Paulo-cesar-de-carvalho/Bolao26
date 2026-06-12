@@ -62,30 +62,35 @@ function calcularClassificacao(jogos) {
                 }
             }
             classificacao.push(jogador)
+        }
 
-            // Critérios de desempate
-            classificacao.sort((a, b) => b.nome.localeCompare(a.nome)) // Ordem alfabética
-            classificacao.sort((a, b) => (a.resultados <= b.resultados ? 1 : -1))
-            classificacao.sort((a, b) => (a.placares <= b.placares ? 1 : -1))
-            classificacao.sort((a, b) => (a.pontos <= b.pontos ? 1 : -1))
+        // Critérios de desempate
+        classificacao.sort(
+            (a, b) =>
+                b.pontos - a.pontos ||
+                b.placares - a.placares ||
+                b.resultados - a.resultados ||
+                a.nome.localeCompare(b.nome) // Ordem alfabética
+        )
 
-            // Cálculo das posições
-            for (let i = 1; i < classificacao.length; i++) {
-                const atual = classificacao[i]
-                const anterior = classificacao[i - 1]
-                if (
-                    atual.pontos == anterior.pontos &&
-                    atual.placares == anterior.placares &&
-                    atual.resultados == anterior.resultados
-                ) {
-                    atual.pos = anterior.pos
-                } else {
-                    atual.pos = i + 1
-                }
+        // Cálculo das posições
+        for (let i = 1; i < classificacao.length; i++) {
+            const atual = classificacao[i]
+            const anterior = classificacao[i - 1]
+            if (
+                atual.pontos == anterior.pontos &&
+                atual.placares == anterior.placares &&
+                atual.resultados == anterior.resultados
+            ) {
+                atual.pos = anterior.pos
+            } else {
+                atual.pos = i + 1
             }
+        }
 
-            // Cálculo das variações
-            if (diaAnterior != null) {
+        // Cálculo das variações
+        if (diaAnterior != null) {
+            for (const jogador of classificacao) {
                 const classificacaoDiaAnterior = classificacaoPorDia.get(diaAnterior)
                 const posDiaAnterior = classificacaoDiaAnterior.find(
                     (c) => c.nome === jogador.nome
@@ -93,6 +98,7 @@ function calcularClassificacao(jogos) {
                 jogador.var = jogador.pos - posDiaAnterior
             }
         }
+
         classificacaoPorDia.set(dia, classificacao)
     }
     const ultimoDia = dias.length > 0 ? dias[dias.length - 1] : null
