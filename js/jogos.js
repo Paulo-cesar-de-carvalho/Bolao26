@@ -23,6 +23,7 @@ async function carregarJogos() {
                 horaLocalJogo.getMonth(),
                 horaLocalJogo.getDate()
             ),
+            finalizado: placar.ResultType == 1,
             estadio: placar.Stadium.Name[0].Description,
             grupo: placar.GroupName[0].Description,
             timeA: placar.Home.Abbreviation,

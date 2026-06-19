@@ -34,8 +34,14 @@ function construirClassificacaoGeral(classificacaoGeral, tbody) {
 }
 
 function construirListaDeJogos(jogos, div) {
+    let jogoAtualMarcado = false
     for (const jogo of jogos) {
-        div.appendChild(construirPlacar(jogo, jogo.placarA, jogo.placarB))
+        const divJogo = construirPlacar(jogo, jogo.placarA, jogo.placarB)
+        if (!jogo.finalizado && !jogoAtualMarcado) {
+            divJogo.id = "jogoAtual"
+            jogoAtualMarcado = true
+        }
+        div.appendChild(divJogo)
     }
 }
 

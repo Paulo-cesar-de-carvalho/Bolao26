@@ -1,8 +1,18 @@
 function construirListaDePalpites(lista, jogos, aposta) {
     lista.innerHTML = ""
+    const linkJogoAtual = document.createElement("a")
+    linkJogoAtual.href = "#jogoAtual"
+    linkJogoAtual.innerHTML = "&darr; Pular para jogo atual"
+    lista.appendChild(linkJogoAtual)
+    let jogoAtualMarcado = false
     for (const jogo of jogos) {
         const placarAposta = aposta.jogos[jogo.jogo_num]
-        lista.appendChild(construirPlacar(jogo, placarAposta.A, placarAposta.B))
+        const divJogo = construirPlacar(jogo, placarAposta.A, placarAposta.B)
+        if (!jogo.finalizado && !jogoAtualMarcado) {
+            divJogo.id = "jogoAtual"
+            jogoAtualMarcado = true
+        }
+        lista.appendChild(divJogo)
         if (jogo.placarA != null && jogo.placarB != null) {
             const pontuacao = calcularPontuacaoPalpite(
                 placarAposta.A,
