@@ -24,7 +24,9 @@ async function carregarJogos() {
                 horaLocalJogo.getDate()
             ),
             finalizado: placar.ResultType == 1,
+            em_andamento: placar.MatchStatus == 3,
             estadio: placar.Stadium.Name[0].Description,
+            tempo_partida: placar.MatchTime,
             grupo: placar.GroupName[0].Description,
             timeA: placar.Home.Abbreviation,
             timeB: placar.Away.Abbreviation,

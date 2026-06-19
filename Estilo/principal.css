@@ -61,6 +61,10 @@ nav {
     text-align: center;
 }
 
+.jogo_em_andamento {
+    background-color: var(--cor-primaria);
+}
+
 .placar_linha {
     width: 100%;
     height: 3rem;

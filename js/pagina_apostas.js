@@ -4,13 +4,19 @@ function construirListaDePalpites(lista, jogos, aposta) {
     linkJogoAtual.href = "#jogoAtual"
     linkJogoAtual.innerHTML = "&darr; Pular para jogo atual"
     lista.appendChild(linkJogoAtual)
-    let jogoAtualMarcado = false
+    let utilmoJogoComResultado = null
+    let primeiroJogoEmAndamento = null
     for (const jogo of jogos) {
         const placarAposta = aposta.jogos[jogo.jogo_num]
         const divJogo = construirPlacar(jogo, placarAposta.A, placarAposta.B)
-        if (!jogo.finalizado && !jogoAtualMarcado) {
-            divJogo.id = "jogoAtual"
-            jogoAtualMarcado = true
+        if (jogo.em_andamento) {
+            divJogo.classList.add("jogo_em_andamento")
+            if (primeiroJogoEmAndamento == null) {
+                primeiroJogoEmAndamento = divJogo
+            }
+        }
+        if (jogo.finalizado) {
+            ultimoJogoComResultado = divJogo
         }
         lista.appendChild(divJogo)
         if (jogo.placarA != null && jogo.placarB != null) {
@@ -26,6 +32,10 @@ function construirListaDePalpites(lista, jogos, aposta) {
             resultadoOficial.innerHTML = `Resultado Oficial: ${jogo.placarA} x ${jogo.placarB} (${pontuacao} pontos)`
             lista.appendChild(resultadoOficial)
         }
+    }
+    const divJogoAtual = primeiroJogoEmAndamento || ultimoJogoComResultado
+    if (divJogoAtual != null) {
+        divJogoAtual.id = "jogoAtual"
     }
 }
 

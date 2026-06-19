@@ -34,14 +34,30 @@ function construirClassificacaoGeral(classificacaoGeral, tbody) {
 }
 
 function construirListaDeJogos(jogos, div) {
-    let jogoAtualMarcado = false
+    let utilmoJogoComResultado = null
+    let primeiroJogoEmAndamento = null
     for (const jogo of jogos) {
         const divJogo = construirPlacar(jogo, jogo.placarA, jogo.placarB)
-        if (!jogo.finalizado && !jogoAtualMarcado) {
-            divJogo.id = "jogoAtual"
-            jogoAtualMarcado = true
+        if (jogo.em_andamento) {
+            divJogo.classList.add("jogo_em_andamento")
+            if (primeiroJogoEmAndamento == null) {
+                primeiroJogoEmAndamento = divJogo
+            }
+        }
+        if (jogo.finalizado) {
+            ultimoJogoComResultado = divJogo
         }
         div.appendChild(divJogo)
+        if (jogo.em_andamento) {
+            const tempoPartidaDiv = document.createElement("div")
+            tempoPartidaDiv.innerHTML = `Tempo do jogo: ${jogo.tempo_partida}`
+            tempoPartidaDiv.classList.add("resultado_oficial")
+            div.appendChild(tempoPartidaDiv)
+        }
+    }
+    const divJogoAtual = primeiroJogoEmAndamento || ultimoJogoComResultado
+    if (divJogoAtual != null) {
+        divJogoAtual.id = "jogoAtual"
     }
 }
 
