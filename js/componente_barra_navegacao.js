@@ -1,8 +1,8 @@
 const ICONE_LINK_EXTERNO = '<i class="bi bi-box-arrow-up-right"></i>'
 
 const items = [
-    { nome: "Classificação Geral", url: "index.html", externo: false },
-    { nome: "Apostas", url: "apostas.html", externo: false },
+    { nome: "Classificação Geral (16 Avos de Final)", url: "index.html", externo: false },
+    { nome: "Apostas (16 Avos de Final)", url: "apostas.html", externo: false },
     { nome: "Regras (16 Avos de Final)", url: "regras_16_avos.html", externo: false },
     { nome: "Classificação Geral (Fase de Grupos)", url: "classificacao_fase_grupos.html", externo: false },
     { nome: "Apostas (Fase de Grupos)", url: "apostas_fase_grupos.html", externo: false },
