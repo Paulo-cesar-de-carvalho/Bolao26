@@ -15,15 +15,14 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
         />
-        <link rel="stylesheet" href="Estilo/16_avos.css" />
         <link rel="stylesheet" href="Estilo/principal.css" />
-        <script src="js/dados/apostas_16avos.js"></script>
-        <script src="js/dados/id_jogos_16avos.js"></script>
+        <script src="js/dados/apostas.js"></script>
+        <script src="js/dados/id_jogos.js"></script>
         <script src="js/calculos.js"></script>
         <script src="js/jogos.js"></script>
         <script src="js/componente_placar.js"></script>
         <script src="js/componente_barra_navegacao.js"></script>
-        <script src="js/pagina_classificacao.js" defer></script>
+        <script src="js/pagina_apostas.js" defer></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -44,33 +43,19 @@
             </div>
         </nav>
         <div class="container">
-            <div id="pagina_geral_temp">
+            <div id="pagina_apostas_temp">
                 <center>
                     <div class="spinner-border" role="status">
                         <span class="visually-hidden">Carregando...</span>
                     </div>
                 </center>
             </div>
-            <div class="escondido" id="pagina_geral">
+            <div class="escondido" id="pagina_apostas">
                 <center>
-                    <h3 class="titulo">Classificação Geral - 16 Avos de Final</h3>
+                    <h3 class="titulo">Apostas - Fase de Grupos</h3>
                 </center>
-                <table class="table table-sm table-striped">
-                    <thead>
-                        <th>Var</th>
-                        <th>Pos</th>
-                        <th>Nome</th>
-                        <th>Pts</th>
-                        <th>Placar</th>
-                        <th>Resultado</th>
-                    </thead>
-                    <tbody id="tbody_geral"></tbody>
-                </table>
-                <center>
-                    <h3 class="titulo">Resultados Oficiais</h3>
-                    <a href="#jogoAtual">&darr; Pular para jogo atual</a>
-                </center>
-                <div id="jogos_placar_lista" class="placar_lista"></div>
+                <select class="form-select" id="select_apostadores"></select>
+                <div id="apostas_placar_lista" class="placar_lista"></div>
             </div>
         </div>
         <script

@@ -49,9 +49,11 @@ function construirPlacar(jogo, placarA, placarB) {
 
     divPlacarContainer.appendChild(divLinhaPlacar)
 
-    const divGrupo = document.createElement("div")
-    divGrupo.innerHTML = jogo.grupo
-    divPlacarContainer.appendChild(divGrupo)
+    if (jogo.grupo != null) {
+        const divGrupo = document.createElement("div")
+        divGrupo.innerHTML = jogo.grupo
+        divPlacarContainer.appendChild(divGrupo)
+    }
 
     return divPlacarContainer
 }

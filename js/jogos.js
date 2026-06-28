@@ -1,5 +1,5 @@
 const FIFA_API_URL =
-    "https://api.fifa.com/api/v3/calendar/matches?from=2026-06-10T00%3A00%3A00Z&to=2026-06-28T23%3A59%3A59Z&language=pt&count=500&idCompetition=17"
+    "https://api.fifa.com/api/v3/calendar/matches?from=2026-06-10T00%3A00%3A00Z&to=2026-07-19T23%3A59%3A59Z&language=pt&count=500&idCompetition=17"
 
 async function carregarJogos() {
     const placares = await (await fetch(FIFA_API_URL)).json()
@@ -27,7 +27,7 @@ async function carregarJogos() {
             em_andamento: placar.MatchStatus == 3,
             estadio: placar.Stadium.Name[0].Description,
             tempo_partida: placar.MatchTime,
-            grupo: placar.GroupName[0].Description,
+            grupo: placar.GroupName.length > 0 ? placar.GroupName[0].Description : null,
             timeA: placar.Home.Abbreviation,
             timeB: placar.Away.Abbreviation,
             timeA_nome: placar.Home.TeamName[0].Description,
