@@ -967,7 +967,7 @@ const apostas = [
         }
     },
     {
-        'nome': 'Liz Rosa de Carvalho',
+        'nome': 'Liz Rosa Carvalho',
         'jogos': {
             73: { 'A': 1, 'B': 2 },
             76: { 'A': 3, 'B': 1 },
